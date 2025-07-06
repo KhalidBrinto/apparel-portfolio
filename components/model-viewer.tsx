@@ -6,6 +6,7 @@ import { OrbitControls, useGLTF, Center } from '@react-three/drei'
 import { Suspense, useRef, useState } from 'react'
 import { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import { Group } from 'three'
+import { EffectComposer, Bloom, HueSaturation, Vignette } from '@react-three/postprocessing'
 
 function Model({ isDragging }: { isDragging: boolean }) {
     const gltf = useGLTF('/models/model.glb')
@@ -62,7 +63,7 @@ export default function ModelViewer() {
                     shadow-mapSize-height={1024}
                 />
                 <Suspense fallback={null}>
-                    <Model isDragging={isDragging}/>
+                    <Model isDragging={isDragging} />
                 </Suspense>
                 <OrbitControls
                     ref={controlsRef}
@@ -73,6 +74,13 @@ export default function ModelViewer() {
                     onStart={() => setIsDragging(true)}
                     onEnd={() => setIsDragging(false)}
                 />
+                <EffectComposer>
+                    <Bloom intensity={0.3} luminanceThreshold={0.2} />
+                    <Vignette eskil={false} offset={0.1} darkness={1.1} />
+                    <HueSaturation       // Range: -1 to 1 (0 = no change)
+                        saturation={0.3}  // Range: -1 to 1 (0 = no change)
+                    />
+                </EffectComposer>
             </Canvas>
         </div>
     )
