@@ -4,6 +4,7 @@
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, useGLTF, Center } from '@react-three/drei'
 import { Suspense, useRef, useState } from 'react'
+import { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import { Group } from 'three'
 
 function Model({ isDragging }: { isDragging: boolean }) {
@@ -27,7 +28,7 @@ function Model({ isDragging }: { isDragging: boolean }) {
 }
 
 export default function ModelViewer() {
-    const controlsRef = useRef<any>(null)
+    const controlsRef = useRef<OrbitControlsImpl>(null)
     const [isDragging, setIsDragging] = useState(false)
     return (
         <div className='h-[600px] w-full'> {/* or full height */}
