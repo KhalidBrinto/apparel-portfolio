@@ -7,10 +7,13 @@ import { Suspense, useRef, useState } from 'react'
 import { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import { Group } from 'three'
 import { EffectComposer, Bloom, HueSaturation, Vignette } from '@react-three/postprocessing'
+import { useMediaQuery } from 'react-responsive'
+
 
 function Model({ isDragging }: { isDragging: boolean }) {
     const gltf = useGLTF('/models/model.glb')
     const modelRef = useRef<Group>(null)
+
 
     // Animate rotation on every frame
     useFrame(() => {
@@ -31,37 +34,40 @@ function Model({ isDragging }: { isDragging: boolean }) {
 export default function ModelViewer() {
     const controlsRef = useRef<OrbitControlsImpl>(null)
     const [isDragging, setIsDragging] = useState(false)
+    const isSmallScreen = useMediaQuery({ query: '(max-width: 500px)' })
     return (
-        <div className='h-[600px] w-full'> {/* or full height */}
+        <div className='h-[350px] sm:h-[400px] lg:h-[600px] w-full'> {/* or full height */}
             <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
                 <ambientLight intensity={1.2} />
 
-                <directionalLight
-                    color="#ffeccd"
-                    intensity={1.2}
-                    position={[0, 5, 0]}
-                    castShadow
-                    shadow-mapSize-width={1024}
-                    shadow-mapSize-height={1024}
-                />
-
-                <directionalLight
-                    color="#d0eaff"
-                    intensity={1.5}
-                    position={[-5, 2, 2]}
-                    castShadow
-                    shadow-mapSize-width={1024}
-                    shadow-mapSize-height={1024}
-                />
-
-                <directionalLight
-                    color="#fff2e6"
-                    intensity={1.5}
-                    position={[5, 1, -2]}
-                    castShadow
-                    shadow-mapSize-width={1024}
-                    shadow-mapSize-height={1024}
-                />
+                {!isSmallScreen && (
+                    <>
+                        <directionalLight
+                            color="#ffeccd"
+                            intensity={1.2}
+                            position={[0, 5, 0]}
+                            castShadow
+                            shadow-mapSize-width={1024}
+                            shadow-mapSize-height={1024}
+                        />
+                        <directionalLight
+                            color="#d0eaff"
+                            intensity={1.5}
+                            position={[-5, 2, 2]}
+                            castShadow
+                            shadow-mapSize-width={1024}
+                            shadow-mapSize-height={1024}
+                        />
+                        <directionalLight
+                            color="#fff2e6"
+                            intensity={1.5}
+                            position={[5, 1, -2]}
+                            castShadow
+                            shadow-mapSize-width={1024}
+                            shadow-mapSize-height={1024}
+                        />
+                    </>
+                )}
                 <Suspense fallback={null}>
                     <Model isDragging={isDragging} />
                 </Suspense>
