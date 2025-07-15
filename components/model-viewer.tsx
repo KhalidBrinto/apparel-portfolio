@@ -77,6 +77,10 @@ export default function ModelViewer() {
                     enablePan={false}               // optional
                     maxPolarAngle={Math.PI / 2}     // limit vertical rotation
                     minPolarAngle={Math.PI / 2}     // lock to horizontal plane (Y-axis only)
+                    touches={{
+                        ONE: 0, // Disable single-finger touch rotation
+                        TWO: 0, // Disable pinch-zoom (just in case)
+                    }}
                     onStart={() => setIsDragging(true)}
                     onEnd={() => setIsDragging(false)}
                 />
