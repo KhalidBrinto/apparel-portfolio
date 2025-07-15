@@ -20,7 +20,7 @@ export default function Features() {
                                 />
                             </CardDecorator>
 
-                            <h3 className="mt-6 font-medium">Customizable</h3>
+                            <h3 className="mt-6 font-medium">Faster Sampling</h3>
                         </CardHeader>
 
                         <CardContent>
@@ -37,7 +37,7 @@ export default function Features() {
                                 />
                             </CardDecorator>
 
-                            <h3 className="mt-6 font-medium">You have full control</h3>
+                            <h3 className="mt-6 font-medium">We&apos;re Built Like a Brand</h3>
                         </CardHeader>
 
                         <CardContent>

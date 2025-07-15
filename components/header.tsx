@@ -19,7 +19,8 @@ export const HeroHeader = () => {
             <nav
                 data-state={menuState && 'active'}
                 className="fixed z-20 py-5 w-full px-6">
-                <div className="bg-foreground/15 mx-auto max-w-6xl px-10 transition-all duration-300 border rounded-full backdrop-blur-3xl lg:px-6">
+                <div className={`${menuState ? 'bg-foreground/15 backdrop-blur-3xl' : 'bg-foreground/15 border rounded-full backdrop-blur-3xl'
+                    } mx-auto max-w-6xl px-10 lg:px-6`}>
                     <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
                         <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
                             <Link
@@ -69,17 +70,9 @@ export const HeroHeader = () => {
                             <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                                 <Button
                                     asChild
-                                    variant="outline"
                                     size="sm">
                                     <Link href="#">
-                                        <span>Login</span>
-                                    </Link>
-                                </Button>
-                                <Button
-                                    asChild
-                                    size="sm">
-                                    <Link href="#">
-                                        <span>Sign Up</span>
+                                        <span>Call Us Now</span>
                                     </Link>
                                 </Button>
                             </div>
