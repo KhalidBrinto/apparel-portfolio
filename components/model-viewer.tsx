@@ -8,7 +8,7 @@ import { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import { Group } from 'three'
 import { EffectComposer, Bloom, HueSaturation, Vignette } from '@react-three/postprocessing'
 import { useMediaQuery } from 'react-responsive'
-
+import { useEffect } from 'react'
 
 function Model({ isDragging }: { isDragging: boolean }) {
     const gltf = useGLTF('/models/model.glb')
@@ -31,10 +31,16 @@ function Model({ isDragging }: { isDragging: boolean }) {
     )
 }
 
-export default function ModelViewer() {
+export default function ModelViewer({ onLoad }: { onLoad?: () => void }) {
     const controlsRef = useRef<OrbitControlsImpl>(null)
     const [isDragging, setIsDragging] = useState(false)
     const isSmallScreen = useMediaQuery({ query: '(max-width: 500px)' })
+
+    useEffect(() => {
+        // Simulate loading or call onLoad when actual loading is done
+        if (onLoad) onLoad();
+    }, [onLoad]);
+
     return (
         <div className='h-[350px] sm:h-[400px] lg:h-[600px] w-full'> {/* or full height */}
             <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>

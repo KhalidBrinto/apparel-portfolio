@@ -7,10 +7,13 @@ import { AuroraBackground } from './ui/aurora-background';
 import dynamic from 'next/dynamic'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
+import { useState } from 'react';
 
 const ModelViewer = dynamic(() => import('./model-viewer'), { ssr: false })
 
 export default function HeroSection() {
+    const [modelLoaded, setModelLoaded] = useState(false);
+
     return (
         <>
             <HeroHeader />
@@ -50,7 +53,14 @@ export default function HeroSection() {
 
                                 {/* 3D Model */}
                                 <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2">
-                                    <ModelViewer />
+                                    {!modelLoaded && (
+                                        <div className="flex items-center justify-center h-64">
+                                            <span>Loading 3D Model...</span>
+                                        </div>
+                                    )}
+                                    <div style={{ display: modelLoaded ? 'block' : 'none' }}>
+                                        <ModelViewer onLoad={() => setModelLoaded(true)} />
+                                    </div>
                                 </div>
 
                             </div>
