@@ -35,8 +35,8 @@ const specializations = [
 
 export default function Specialization() {
     return (
-        <section className="py-32">
-            <div className="@container max-w-5xl mx-auto px-4 space-y-24">
+        <section className="py-20 md:py-20">
+            <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-12">
                 <div className="text-center">
                     <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Our Specializations</h2>
                     <p className="mt-4">Tailored Apparel Solutions for Modern Brands Across Every Category.</p>

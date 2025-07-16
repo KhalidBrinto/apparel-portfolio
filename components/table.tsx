@@ -83,7 +83,7 @@ const tabledata = [
 export function TableDemographics() {
     return (
 
-        <section className="py-32">
+        <section className="py-20 md:py-32">
             <div className="max-w-5xl mx-auto px-4 space-y-24">
                 <div className="text-center">
                     <h2 className="text-balance mb-4 text-4xl font-semibold lg:text-5xl">Our Edge Over the Industry Giants</h2>

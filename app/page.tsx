@@ -5,11 +5,13 @@ import FooterSection from "@/components/footer";
 import ContactSection from "@/components/contact";
 import { TableDemographics } from "@/components/table";
 import Specialization from "@/components/specialization";
+import ClientSection from '@/components/client-section';
 export default function Home() {
   return (
     <div className="min-h-screen w-full">
 
       <HeroSection />
+      <ClientSection />
       <Specialization/>
       <Features />
       <TableDemographics/>
