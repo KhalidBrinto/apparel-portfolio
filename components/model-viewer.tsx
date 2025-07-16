@@ -6,8 +6,6 @@ import { OrbitControls, useGLTF, Center } from '@react-three/drei'
 import { Suspense, useRef, useState } from 'react'
 import { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import { Group } from 'three'
-import { EffectComposer, Bloom, HueSaturation, Vignette } from '@react-three/postprocessing'
-import { useMediaQuery } from 'react-responsive'
 import { useEffect } from 'react'
 
 function Model({ isDragging }: { isDragging: boolean }) {
@@ -34,7 +32,7 @@ function Model({ isDragging }: { isDragging: boolean }) {
 export default function ModelViewer({ onLoad }: { onLoad?: () => void }) {
     const controlsRef = useRef<OrbitControlsImpl>(null)
     const [isDragging, setIsDragging] = useState(false)
-    const isSmallScreen = useMediaQuery({ query: '(max-width: 500px)' })
+    // const isSmallScreen = useMediaQuery({ query: '(max-width: 500px)' })
 
     useEffect(() => {
         // Simulate loading or call onLoad when actual loading is done
@@ -43,10 +41,10 @@ export default function ModelViewer({ onLoad }: { onLoad?: () => void }) {
 
     return (
         <div className='h-[350px] sm:h-[400px] lg:h-[600px] w-full'> {/* or full height */}
-            <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
+            <Canvas camera={{ position: [0, 0, 5], fov:52 }}>
                 <ambientLight intensity={1.0} />
 
-                {!isSmallScreen && (
+                {/* {!isSmallScreen && (
                     <>
                         <directionalLight
                             color="#ffeccd"
@@ -73,7 +71,7 @@ export default function ModelViewer({ onLoad }: { onLoad?: () => void }) {
                             shadow-mapSize-height={1024}
                         />
                     </>
-                )}
+                )} */}
                 <Suspense fallback={null}>
                     <Model isDragging={isDragging} />
                 </Suspense>
@@ -90,13 +88,13 @@ export default function ModelViewer({ onLoad }: { onLoad?: () => void }) {
                     onStart={() => setIsDragging(true)}
                     onEnd={() => setIsDragging(false)}
                 />
-                <EffectComposer>
+                {/* <EffectComposer>
                     <Bloom intensity={0.3} luminanceThreshold={0.2} />
                     <Vignette eskil={false} offset={0.1} darkness={1.1} />
                     <HueSaturation       // Range: -1 to 1 (0 = no change)
                         saturation={0.3}  // Range: -1 to 1 (0 = no change)
                     />
-                </EffectComposer>
+                </EffectComposer> */}
             </Canvas>
         </div>
     )
