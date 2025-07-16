@@ -11,7 +11,7 @@ import { useMediaQuery } from 'react-responsive'
 import { useEffect } from 'react'
 
 function Model({ isDragging }: { isDragging: boolean }) {
-    const gltf = useGLTF('/models/model.glb')
+    const gltf = useGLTF('/models/model_shaded.glb')
     const modelRef = useRef<Group>(null)
 
 
@@ -44,7 +44,7 @@ export default function ModelViewer({ onLoad }: { onLoad?: () => void }) {
     return (
         <div className='h-[350px] sm:h-[400px] lg:h-[600px] w-full'> {/* or full height */}
             <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-                <ambientLight intensity={1.2} />
+                <ambientLight intensity={1.0} />
 
                 {!isSmallScreen && (
                     <>
