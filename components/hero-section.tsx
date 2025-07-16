@@ -52,7 +52,7 @@ export default function HeroSection() {
                                 </div>
 
                                 {/* 3D Model */}
-                                <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2  pt-20 sm:pt-40">
+                                <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2  pt-0 sm:pt-40">
                                     {!modelLoaded && (
                                         <div className="flex items-center justify-center h-64">
                                             <span>Loading 3D Model...</span>
