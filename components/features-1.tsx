@@ -43,7 +43,7 @@ export default function Features() {
                 <h2 className="text-primary/85 text-4xl font-montserrat font-semibold lg:text-5xl">
                     Why Global Buyers Are Switching to Us
                 </h2>
-                <p className="mt-4">
+                <p className="mt-4 subtitle font-montserrat">
                     Your product is unique. Your sourcing partner should be too.
                 </p>
             </div>
