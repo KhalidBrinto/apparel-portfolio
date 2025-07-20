@@ -32,6 +32,13 @@ const specializations = [
         description: "Heavyweight shirts, cargo pants, and jackets with structured utility designs.",
         image: "/woven.png",
     },
+    {
+        id: 5,
+        icon: "🧥",
+        title: "Accessories",
+        description: "Heavyweight shirts, cargo pants, and jackets with structured utility designs.",
+        image: "/woven.png",
+    },
 ]
 
 function SpecializationItem({ item, index }: { item: typeof specializations[0], index: number }) {
@@ -70,7 +77,7 @@ export default function Specialization() {
         <section className="py-20 md:py-20">
             <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-12">
                 <div className="text-center">
-                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Our Specializations</h2>
+                    <h2 className="text-primary/85 text-4xl font-montserrat font-semibold lg:text-5xl">Our Specializations</h2>
                     <p className="mt-4">Tailored Apparel Solutions for Modern Brands Across Every Category.</p>
                 </div>
                 {specializations.map((item, index) => (

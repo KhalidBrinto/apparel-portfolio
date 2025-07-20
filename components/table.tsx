@@ -59,20 +59,13 @@ const tabledata = [
     },
     {
         id: 8,
-        feature: "Tech Packs / Branding",
-        ours: "🧵 Supported",
-        players: "❌ Not included",
-
-    },
-    {
-        id: 9,
         feature: "Digital Process",
         ours: "📲 Live production updates",
         players: "📄 Manual reports",
 
     },
     {
-        id: 10,
+        id: 9,
         feature: "Visual Impact",
         ours: "📸 Sample videos, lookbooks",
         players: "🧾 Traditional catalogs",
@@ -86,7 +79,7 @@ export function TableDemographics() {
         <section className="py-20 md:py-32">
             <div className="max-w-5xl mx-auto px-4 space-y-24">
                 <div className="text-center">
-                    <h2 className="text-balance mb-4 text-4xl font-semibold lg:text-5xl">Our Edge Over the Industry Giants</h2>
+                    <h2 className="text-primary/85 mb-4 text-4xl font-montserrat font-semibold lg:text-5xl">Our Edge Over the Industry Giants</h2>
                 </div>
                 <Table>
                     <TableHeader>

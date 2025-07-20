@@ -30,7 +30,7 @@ const links = [
 
 export default function FooterSection() {
     return (
-        <footer className="py-10 md:py-15">
+        <footer className="py-10 md:py-10">
             <div className="mx-auto max-w-5xl px-6">
                 <Link
                     href="/"
@@ -158,7 +158,7 @@ export default function FooterSection() {
                         </svg>
                     </Link>
                 </div>
-                <span className="text-muted-foreground block text-center text-sm"> © {new Date().getFullYear()} Tailark, All rights reserved</span>
+                <span className="text-muted-foreground block text-center text-sm"> © {new Date().getFullYear()} ATTINI SOURCING, All rights reserved</span>
             </div>
         </footer>
     )

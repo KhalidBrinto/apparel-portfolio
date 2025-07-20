@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button'
 import { HeroHeader } from './header'
 import { AuroraBackground } from './ui/aurora-background';
 import dynamic from 'next/dynamic'
-import { InfiniteSlider } from '@/components/ui/infinite-slider'
-import { ProgressiveBlur } from '@/components/ui/progressive-blur'
+// import { InfiniteSlider } from '@/components/ui/infinite-slider'
+// import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { useState } from 'react';
 
 const ModelViewer = dynamic(() => import('./model-viewer'), { ssr: false })
@@ -26,7 +26,11 @@ export default function HeroSection() {
                         <div className="pb-24 pt-35 md:pb-32 lg:pb-56 lg:pt-20">
                             <div className="relative mx-auto flex items-center justify-center max-w-6xl flex-col px-6 md:flex-row lg:justify-between">
                                 <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2 lg:text-left">
-                                    <h1 className="mt-8 max-w-2xl text-balance text-3xl font-medium md:text-4xl lg:mt-16 xl:text-5xl">The Future of Fashion Sourcing Starts Here</h1>
+                                    <h1 className="
+                                            mt-8 max-w-2xl text-balance text-3xl font-medium md:text-4xl lg:mt-16 xl:text-5xl
+                                            bg-gradient-to-r from-primary via-blue-300 to-primary
+                                            bg-clip-text text-transparent animate-gradient-x
+                                        ">The Future of Fashion Sourcing Starts Here</h1>
                                     <p className="mt-8 max-w-2xl text-pretty text-lg">Smarter. Faster. More Creative. Built for Today’s Fashion Brands.</p>
 
                                     <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
@@ -67,7 +71,7 @@ export default function HeroSection() {
                         </div>
                     </section>
                 </AuroraBackground>
-                <section className="bg-background py-20 md:py-32">
+                {/* <section className="bg-background py-20 md:py-32">
                     <div className="group relative m-auto max-w-6xl px-6">
                         <div className="flex flex-col items-center md:flex-row">
                             <div className="md:max-w-44 md:border-r md:pr-6">
@@ -169,7 +173,7 @@ export default function HeroSection() {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
 
 
             </main>

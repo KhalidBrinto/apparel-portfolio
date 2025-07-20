@@ -10,7 +10,7 @@ export default function ContactSection() {
     return (
         <section className="py-20 md:py-32">
             <div className="mx-auto max-w-4xl px-4 lg:px-0">
-                <h1 className="mb-12 text-center text-4xl font-semibold lg:text-5xl">Help us route your inquiry</h1>
+                <h1 className="mb-12 text-center text-primary/85 text-4xl font-montserrat font-semibold lg:text-5xl">Help us route your inquiry</h1>
 
                 <div className="grid divide-y border md:grid-cols-2 md:gap-4 md:divide-x md:divide-y-0">
                     <div className="flex flex-col justify-between space-y-8 p-6 sm:p-12">

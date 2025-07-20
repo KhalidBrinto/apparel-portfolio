@@ -19,7 +19,7 @@ export const HeroHeader = () => {
             <nav
                 data-state={menuState && 'active'}
                 className="fixed z-20 py-5 w-full px-6">
-                <div className={`${menuState ? 'bg-foreground/15 backdrop-blur-md border rounded-md' : 'bg-foreground/15 border rounded-full backdrop-blur-md'
+                <div className={`${menuState ? 'bg-foreground/15 backdrop-blur-md border-0 rounded-md' : 'bg-foreground/15 border-0 rounded-full backdrop-blur-md'
                     } mx-auto max-w-6xl px-10 lg:px-6`}>
                     <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
                         <div className="flex w-full items-center justify-between gap-12 lg:w-auto">
@@ -44,7 +44,7 @@ export const HeroHeader = () => {
                                         <li key={index}>
                                             <Link
                                                 href={item.href}
-                                                className="text-muted-foreground hover:text-accent-foreground block duration-150">
+                                                className="text-muted-foreground hover:text-primary block duration-150">
                                                 <span>{item.name}</span>
                                             </Link>
                                         </li>

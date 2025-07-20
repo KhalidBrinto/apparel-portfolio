@@ -1,82 +1,115 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { Settings2, Sparkles, Zap } from 'lucide-react'
-import { ReactNode } from 'react'
+"use client";
+import React from "react";
+import useEmblaCarousel from "embla-carousel-react";
+
+// Specializations data (copied from specialization.tsx)
+const specializations = [
+    {
+        id: 1,
+        title: "Streetwear",
+        description: "Oversized tees, drop shoulders, custom wash finishes tailored for bold collections.",
+        image: "/streetwear.png",
+    },
+    {
+        id: 2,
+        title: "Premium Embellishments",
+        description: "HD rubber, puff print, embroidery, reflective, badges & trims with high-detail finesse.",
+        image: "/embellishment.png",
+    },
+    {
+        id: 3,
+        title: "Sustainable Knits",
+        description: "Organic cotton, GOTS-certified loungewear and everyday essentials in soft natural tones.",
+        image: "/knit.png",
+    },
+    {
+        id: 4,
+        title: "Wovens & Workwear",
+        description: "Heavyweight shirts, cargo pants, and jackets with structured utility designs.",
+        image: "/woven.png",
+    },
+    {
+        id: 5,
+        title: "Accessories",
+        description: "Heavyweight shirts, cargo pants, and jackets with structured utility designs.",
+        image: "/woven.png",
+    },
+];
 
 export default function Features() {
     return (
-        <section className="bg-zinc-50 py-16 md:py-32 dark:bg-transparent">
-            <div className="@container mx-auto max-w-5xl px-6">
-                <div className="text-center">
-                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Built to cover your needs</h2>
-                    <p className="mt-4">Libero sapiente aliquam quibusdam aspernatur, praesentium iusto repellendus.</p>
-                </div>
-                <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 *:text-center md:mt-16">
-                    <Card className="group shadow-zinc-950/5">
-                        <CardHeader className="pb-3">
-                            <CardDecorator>
-                                <Zap
-                                    className="size-6"
-                                    aria-hidden
-                                />
-                            </CardDecorator>
-
-                            <h3 className="mt-6 font-medium">Faster Sampling</h3>
-                        </CardHeader>
-
-                        <CardContent>
-                            <p className="text-sm">Extensive customization options, allowing you to tailor every aspect to meet your specific needs.</p>
-                        </CardContent>
-                    </Card>
-
-                    <Card className="group shadow-zinc-950/5">
-                        <CardHeader className="pb-3">
-                            <CardDecorator>
-                                <Settings2
-                                    className="size-6"
-                                    aria-hidden
-                                />
-                            </CardDecorator>
-
-                            <h3 className="mt-6 font-medium">We&apos;re Built Like a Brand</h3>
-                        </CardHeader>
-
-                        <CardContent>
-                            <p className="mt-3 text-sm">From design elements to functionality, you have complete control to create a unique and personalized experience.</p>
-                        </CardContent>
-                    </Card>
-
-                    <Card className="group shadow-zinc-950/5">
-                        <CardHeader className="pb-3">
-                            <CardDecorator>
-                                <Sparkles
-                                    className="size-6"
-                                    aria-hidden
-                                />
-                            </CardDecorator>
-
-                            <h3 className="mt-6 font-medium">Powered By AI</h3>
-                        </CardHeader>
-
-                        <CardContent>
-                            <p className="mt-3 text-sm">Elements to functionality, you have complete control to create a unique experience.</p>
-                        </CardContent>
-                    </Card>
-                </div>
+        <section className="w-full py-20">
+            <div className="text-center mb-12 px-6">
+                <h2 className="text-primary/85 text-4xl font-montserrat font-semibold lg:text-5xl">
+                    Why Global Buyers Are Switching to Us
+                </h2>
+                <p className="mt-4">
+                    Your product is unique. Your sourcing partner should be too.
+                </p>
             </div>
+            <ImageCarousel />
         </section>
-    )
+    );
 }
 
-const CardDecorator = ({ children }: { children: ReactNode }) => (
-    <div className="relative mx-auto size-36 duration-200 [--color-border:color-mix(in_oklab,var(--color-zinc-950)10%,transparent)] group-hover:[--color-border:color-mix(in_oklab,var(--color-zinc-950)20%,transparent)] dark:[--color-border:color-mix(in_oklab,var(--color-white)15%,transparent)] dark:group-hover:bg-white/5 dark:group-hover:[--color-border:color-mix(in_oklab,var(--color-white)20%,transparent)]">
+function ImageCarousel() {
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const [autoplay, setAutoplay] = React.useState(true);
+
+    // Autoplay logic
+    React.useEffect(() => {
+        if (!autoplay || !emblaApi) return;
+        const interval = setInterval(() => {
+            emblaApi.scrollNext();
+        }, 4000);
+        return () => clearInterval(interval);
+    }, [autoplay, emblaApi]);
+
+    // Update selected index on slide change
+    React.useEffect(() => {
+        if (!emblaApi) return;
+        const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+        emblaApi.on("select", onSelect);
+        onSelect();
+        return () => {
+            emblaApi.off("select", onSelect);
+        };
+    }, [emblaApi]);
+
+    return (
         <div
-            aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:24px_24px]"
-        />
-        <div
-            aria-hidden
-            className="bg-radial to-background absolute inset-0 from-transparent to-75%"
-        />
-        <div className="bg-background absolute inset-0 m-auto flex size-12 items-center justify-center border-l border-t">{children}</div>
-    </div>
-)
+            className="w-full h-[60vw] max-h-[600px] overflow-hidden"
+            onMouseEnter={() => setAutoplay(false)}
+            onMouseLeave={() => setAutoplay(true)}
+        >
+            <div className="embla" ref={emblaRef}>
+                <div className="embla__container flex">
+                    {specializations.map((item, idx) => (
+                        <div
+                            className="embla__slide min-w-0 flex-[0_0_100%] relative w-full h-[60vw] max-h-[600px] flex items-center justify-center transition-opacity duration-500"
+                            key={item.id}
+                            style={{
+                                backgroundImage: `url(${item.image})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                                opacity: selectedIndex === idx ? 1 : 0.5,
+                                pointerEvents: selectedIndex === idx ? "auto" : "none",
+                            }}
+                        >
+                            <div className="absolute inset-0 bg-black/50" />
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
+                                <h2 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-4">
+                                    {item.title}
+                                </h2>
+                                <p className="text-lg md:text-2xl text-white/90 drop-shadow-md max-w-2xl">
+                                    {item.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
