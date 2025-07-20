@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import Image from "next/image";
 
 // Specializations data (copied from specialization.tsx)
 const specializations = [
@@ -96,13 +97,17 @@ function ImageCarousel() {
                                 className="embla__slide min-w-0 flex-[0_0_100%] relative w-full h-[60vw] max-h-[600px] flex items-center justify-center transition-opacity duration-500"
                                 key={item.id}
                                 style={{
-                                    backgroundImage: `url(${item.image})`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
                                     opacity: selectedIndex === idx ? 1 : 0.5,
                                     pointerEvents: selectedIndex === idx ? "auto" : "none",
                                 }}
                             >
+                                <Image
+                                    src={item.image}
+                                    alt={item.title}
+                                    fill
+                                    className="object-cover"
+                                    loading="lazy"
+                                />
                                 <div className="absolute inset-0 bg-black/50" />
                                 <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
                                     <h2 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-4">

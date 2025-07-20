@@ -61,7 +61,7 @@ function SpecializationItem({ item, index }: { item: typeof specializations[0], 
                 style={{ x, opacity }}
                 className="w-full lg:w-1/2"
             >
-                <Image src={item.image} alt={item.title} width={400} height={200} className="w-full rounded-xl shadow-md"/>
+                <Image src={item.image} alt={item.title} width={400} height={200} className="w-full rounded-xl shadow-md" loading="lazy"/>
             </motion.div>
             <div className="lg:w-1/2">
                 <h3 className="text-2xl font-bold mb-4">{item.title}</h3>

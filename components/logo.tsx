@@ -9,6 +9,7 @@ export const Logo = () => {
                 alt="Logo"
                 width={35}
                 height={35}
+                priority
             />
             <p className="font-montserrat font-semibold">ATTINI SOURCING</p>
         </div>
