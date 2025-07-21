@@ -2,6 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
 import { HeroHeader } from './header'
 import { AuroraBackground } from './ui/aurora-background';
 import dynamic from 'next/dynamic'
@@ -13,6 +14,52 @@ const ModelViewer = dynamic(() => import('./model-viewer'), { ssr: false })
 
 export default function HeroSection() {
     const [modelLoaded, setModelLoaded] = useState(false);
+    const [progress, setProgress] = React.useState(0);
+    const [showModel, setShowModel] = useState(false);
+    const [showLoader, setShowLoader] = useState(false);
+
+    React.useEffect(() => {
+        if (!modelLoaded) {
+            const timeout = setTimeout(() => {
+                setShowLoader(true);
+            }, 300); // 400ms delay
+
+            return () => clearTimeout(timeout);
+        } else {
+            setShowLoader(false);
+        }
+    }, [modelLoaded]);
+
+
+
+    React.useEffect(() => {
+        let interval: NodeJS.Timeout | null = null;
+
+        if (!modelLoaded) {
+            setProgress(20);
+            interval = setInterval(() => {
+                setProgress((old) => {
+                    if (old < 90) return old + 1;
+                    return old;
+                });
+            }, 100);
+        } else {
+            setProgress(100);
+        }
+
+        return () => {
+            if (interval) clearInterval(interval);
+        };
+    }, [modelLoaded]);
+
+    React.useEffect(() => {
+        if (progress === 100) {
+            const timeout = setTimeout(() => setShowModel(true), 100); // 200ms delay
+            return () => clearTimeout(timeout);
+        } else {
+            setShowModel(false);
+        }
+    }, [progress]);
 
     return (
         <>
@@ -57,12 +104,14 @@ export default function HeroSection() {
 
                                 {/* 3D Model */}
                                 <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2  pt-0 sm:pt-40">
-                                    {!modelLoaded && (
-                                        <div className="flex items-center justify-center h-64">
+                                    {showLoader && !showModel && (
+                                        <div className="flex items-center flex-col justify-center h-64 gap-4">
                                             <span>Loading 3D Model...</span>
+                                            <Progress value={progress} className="w-3/4" />
                                         </div>
                                     )}
-                                    <div style={{ display: modelLoaded ? 'block' : 'none' }}>
+
+                                    <div style={{ display: modelLoaded && showModel ? 'block' : 'none' }}>
                                         <ModelViewer onLoad={() => setModelLoaded(true)} />
                                     </div>
                                 </div>

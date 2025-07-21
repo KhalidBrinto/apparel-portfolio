@@ -8,6 +8,7 @@ import { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import { Group } from 'three'
 import { useEffect } from 'react'
 
+
 function Model({ isDragging }: { isDragging: boolean }) {
     const gltf = useGLTF('/models/model_shaded.glb')
     const modelRef = useRef<Group>(null)
