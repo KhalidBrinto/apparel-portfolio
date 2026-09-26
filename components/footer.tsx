@@ -4,11 +4,11 @@ import Link from 'next/link'
 const links = [
     {
         title: 'Features',
-        href: '#',
+        href: '/#features',
     },
     {
         title: 'Solution',
-        href: '#',
+        href: '/#solution',
     },
     {
         title: 'Customers',
@@ -44,7 +44,7 @@ export default function FooterSection() {
                         <Link
                             key={index}
                             href={link.href}
-                            className="text-muted-foreground hover:text-primary block duration-150">
+                            className="text-muted-foreground hover:text-primary block duration-150 font-montserrat">
                             <span>{link.title}</span>
                         </Link>
                     ))}
@@ -158,7 +158,7 @@ export default function FooterSection() {
                         </svg>
                     </Link>
                 </div>
-                <span className="text-muted-foreground block text-center text-sm"> © {new Date().getFullYear()} ATTINI SOURCING, All rights reserved</span>
+                <span className="text-primary block text-center text-sm font-montserrat"> © {new Date().getFullYear()} ATTINI SOURCING, All rights reserved</span>
             </div>
         </footer>
     )

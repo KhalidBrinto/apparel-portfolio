@@ -76,7 +76,7 @@ export default function HeroSection() {
                                     <h1 className="
                                             mt-8 max-w-2xl text-balance text-3xl font-medium md:text-4xl lg:mt-16 xl:text-5xl
                                             bg-gradient-to-r from-primary via-blue-300 to-primary
-                                            bg-clip-text text-transparent animate-gradient-x
+                                            bg-clip-text text-transparent animate-gradient-x leading-tight
                                         ">The Future of Fashion Sourcing Starts Here</h1>
                                     <p className="mt-8 max-w-2xl text-pretty text-lg">Smarter. Faster. More Creative. Built for Today’s Fashion Brands.</p>
 
@@ -94,7 +94,7 @@ export default function HeroSection() {
                                             asChild
                                             size="lg"
                                             variant="ghost"
-                                            className="px-5 text-base">
+                                            className="px-5 text-base border-2 border-transparent hover:border-primary transition-all duration-300 ease-in-out">
                                             <Link href="#link">
                                                 <span className="text-nowrap">Request a demo</span>
                                             </Link>

@@ -64,8 +64,8 @@ function SpecializationItem({ item, index }: { item: typeof specializations[0], 
                 <Image src={item.image} alt={item.title} width={400} height={200} className="w-full rounded-xl shadow-md" loading="lazy"/>
             </motion.div>
             <div className="lg:w-1/2">
-                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                <p className="text-gray-600 text-lg">{item.description}</p>
+                <h3 className="text-2xl subtitle font-montserrat mb-4">{item.title}</h3>
+                <p className="text-gray-400 text-lg">{item.description}</p>
             </div>
         </div>
     )
@@ -74,7 +74,7 @@ function SpecializationItem({ item, index }: { item: typeof specializations[0], 
 
 export default function Specialization() {
     return (
-        <section className="py-20 md:py-20">
+        <section id="features" className="py-20 md:py-20">
             <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-12">
                 <div className="text-center">
                     <h2 className="text-primary/85 text-4xl font-montserrat font-semibold lg:text-5xl">Our Specializations</h2>

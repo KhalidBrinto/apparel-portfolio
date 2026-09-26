@@ -39,7 +39,7 @@ const specializations = [
 
 export default function Features() {
     return (
-        <section className="w-full py-20">
+        <section id="solution" className="w-full py-20">
             <div className="text-center mb-12 px-6">
                 <h2 className="text-primary/85 text-4xl font-montserrat font-semibold lg:text-5xl">
                     Why Global Buyers Are Switching to Us
